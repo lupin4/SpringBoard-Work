@@ -17,4 +17,4 @@ build/
 .DS_Store
 
 # Ignore Starter Code directory
-**/Starter Code/
+**/Starter Code*/
