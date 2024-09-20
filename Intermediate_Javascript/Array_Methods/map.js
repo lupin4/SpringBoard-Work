@@ -48,3 +48,27 @@ const itemsArray = Array.from(items);
 itemsArray.map(function (item) {
   item.style.color = "green";
 });
+
+
+// define a map function that takes an array and a callback function as arguments
+// the callback function is called with the element, the index, and the array as arguments
+// the callback function returns the new value for the array
+// the map function returns the new array
+
+function myMap(array, callback) {
+  const newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    newArray.push(callback(array[i], i, array));
+  }
+  return newArray;
+}
+
+const names = ["John", "Jane", "Doe", "Smith"];
+
+const namesUpperCase = myMap(names, function (name) {
+    return name.toUpperCase();
+});
+
+console.log(namesUpperCase);
+
+
