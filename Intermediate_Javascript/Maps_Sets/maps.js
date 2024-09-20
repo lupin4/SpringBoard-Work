@@ -1,5 +1,12 @@
 // new map
+// maps are great for getting the size of an object
+// maps are also ordered
+// maps are iterable
+// maps are dynamic
+// maps are faster than objects
+
 const myMap = new Map();
+
 
 // add elements to the set
 myMap.set("name", "Dave");
