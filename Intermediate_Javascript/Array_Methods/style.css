@@ -1,0 +1,177 @@
+/* Stylesheet for Numbers Facts Exercise */
+
+/* Body styling */
+body {
+    background-color: beige;
+    font-family: 'Georgia', serif; /* Fancy font family */
+    color: #36454F; /* Charcoal grey color */
+    font-size: 1.5em; /* Large font size */
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ensure content fills the viewport height */
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+h1 {
+    font-size: 4em;
+    color: #36454F;
+    margin-bottom: 80px;
+    margin-top: -400px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+
+}
+
+/* Container to hold content */
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Button styling */
+button {
+    background-color: #36454F;
+    color: beige;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2e3b43;
+}
+
+/* Input field styling */
+input[type="number"] {
+    background: none;
+    border: none;
+    border-bottom: 2px solid #36454F;
+    font-size: 1.5em;
+    color: #36454F;
+    outline: none;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    margin-top: 20px;
+    transition: border-bottom-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-bottom-color: #000000; /* Changes underline color when focused */
+}
+
+
+
+/* Additional spacing */
+.field-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Container styling */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Number Container Styling */
+.number-container {
+    width: 100%;
+    max-width: 400px; /* Limit the maximum width as needed */
+}
+
+/* Submit Form Styling */
+.submit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Button Styling */
+.submit-btn button {
+    padding: 24px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Input Styling (As previously defined) */
+#numberInput {
+    caret-color: transparent; /* Hides the text cursor */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    font-size: 48px;
+    text-align: center;
+}
+/* Remove spinner controls in WebKit browsers (Chrome, Edge, Safari) */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Remove spinner controls in Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    -ms-appearance: textfield; /* Remove spinner controls in Internet Explorer */
+    appearance: textfield;     /* Standard property */
+}
+/* Optional: Change border color on focus for better visibility */
+#numberInput:focus {
+    border-bottom-color: #000000; /* Changes underline color when focused */
+}
+
+/* Fact Wrapper Styling */
+.fact-wrapper {
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+    height: 80px; /* Fixed height based on expected content */
+
+}
+
+/* Number Fact Styling */
+.numberFact {
+    text-align: center;
+    font-size: 1.2em;
+    color: #36454F;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    height: 100%; /* Ensures the text takes up the full height */
+}
+
+/* Show the fact when active */
+.numberFact.active {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .fact-wrapper {
+        height: 200px; /* Increase height if necessary on smaller screens */
+    }
+
+    .numberFact {
+        font-size: 0.9em; /* Adjust font size for readability */
+    }
+}
