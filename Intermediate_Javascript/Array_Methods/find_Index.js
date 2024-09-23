@@ -41,5 +41,5 @@ function myFind(arr, callback) {
   }
 }
 
-myFind(scores, (score) => score >= 60);
-
+const passingGrade2 = myFind(scores, (score) => score >= 60);
+console.log(passingGrade2);
