@@ -43,3 +43,17 @@ function myFind(arr, callback) {
 
 const passingGrade2 = myFind(scores, (score) => score >= 60);
 console.log(passingGrade2);
+
+
+function myFindIndex(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i], i, arr)) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+const firstIndex2 = myFindIndex(scores, (score) => score >= 60);
+console.log(firstIndex2);
+
