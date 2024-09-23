@@ -31,3 +31,15 @@ function arrayPartition(arr, pivot) {
 }
 
 arrayPartition(scores, 60);
+
+
+function myFind(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i], i, arr)) {
+      return arr[i];
+    }
+  }
+}
+
+myFind(scores, (score) => score >= 60);
+
