@@ -35,7 +35,7 @@
 // Example:
 // Consider a simple tree representing an html page
 
-class Node {
+export class Node {
   constructor(value, tagName, attributes = {}, isRoot = false) {
     this.value = value;
     this.tagName = tagName;
@@ -300,43 +300,43 @@ class Node {
 // Example Usage
 // **************************************************
 
-// Create the root node with isRoot = true
-const rootNode = new Node("", "root", {}, true);
+// // Create the root node with isRoot = true
+// const rootNode = new Node("", "root", {}, true);
 
-// Create a title and add it to the head
-const title = rootNode.createHeader(1);
-title.setTextContent("Trees");
-rootNode.head.appendChild(title);
+// // Create a title and add it to the head
+// const title = rootNode.createHeader(1);
+// title.setTextContent("Trees");
+// rootNode.head.appendChild(title);
 
-// Create a paragraph and append it to the body
-const paragraph = rootNode.createP();
-paragraph.setTextContent("Hello, World! Welcome to Advanced Data Structures");
-rootNode.body.appendChild(paragraph);
+// // Create a paragraph and append it to the body
+// const paragraph = rootNode.createP();
+// paragraph.setTextContent("Hello, World! Welcome to Advanced Data Structures and Trees!");
+// rootNode.body.appendChild(paragraph);
 
-// Create a div to wrap the image
-const container = rootNode.createDiv({ class: "image-container" });
+// // Create a div to wrap the image
+// const container = rootNode.createDiv({ class: "image-container" });
 
-// Create an image and add it to the container
-const image = rootNode.createImage(
-  "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-  "A beautiful landscape",
-  { size: { width: "100%", height: "800px" } }
-);
-container.appendChild(image);
+// // Create an image and add it to the container
+// const image = rootNode.createImage(
+//   "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+//   "A beautiful landscape",
+//   { size: { width: "100%", height: "800px" } }
+// );
+// container.appendChild(image);
 
-// Append the container to the body
-rootNode.body.appendChild(container);
+// // Append the container to the body
+// rootNode.body.appendChild(container);
 
-// Create a link and add it to the body with visible text
-const link = rootNode.createLink("https://www.google.com", "Click here");
-rootNode.body.appendChild(link);
+// // Create a link and add it to the body with visible text
+// const link = rootNode.createLink("https://www.google.com", "Click here");
+// rootNode.body.appendChild(link);
 
-// Render and replace the body content
-const bodyContent = rootNode.body.render();
-document.body.parentNode.replaceChild(bodyContent, document.body);
+// // Render and replace the body content
+// const bodyContent = rootNode.body.render();
+// document.body.parentNode.replaceChild(bodyContent, document.body);
 
-// Append the stylesheet to the actual document head
-rootNode.appendStylesheet("style.css");
+// // Append the stylesheet to the actual document head
+// rootNode.appendStylesheet("style.css");
 
 // Create a div with styles using the createDiv method amd the style object
 
@@ -374,12 +374,12 @@ rootNode.appendStylesheet("style.css");
 // document.body.appendChild(domElement);
 
 // Assuming rootNode is an instance of Node and has been populated with children
-const foundNode = rootNode.findDFS("p"); // Finds the first <p> tag in the tree
-if (foundNode) {
-  console.log("Node found:", foundNode);
-} else {
-  console.log("Node not found.");
-}
+// const foundNode = rootNode.findDFS("p"); // Finds the first <p> tag in the tree
+// if (foundNode) {
+//   console.log("Node found:", foundNode);
+// } else {
+//   console.log("Node not found.");
+// }
 
 // Method to create and append a link element for the CSS file
 function appendStylesheet(href) {
@@ -469,45 +469,45 @@ function findDFS(node, value) {
   return null;
 }
 
-// Standalone BFS function
-function findBFS(node, value) {
-  // Use a queue to implement BFS
-  const queue = [node];
+// // Standalone BFS function
+// function findBFS(node, value) {
+//   // Use a queue to implement BFS
+//   const queue = [node];
 
-  while (queue.length > 0) {
-    const current = queue.shift();
-    console.log("BFS Traversing:", current.tagName);
+//   while (queue.length > 0) {
+//     const current = queue.shift();
+//     console.log("BFS Traversing:", current.tagName);
 
-    // Check if the current node matches the search term
-    if (current.tagName === value || current.tagName === value) {
-      return current;
-    }
+//     // Check if the current node matches the search term
+//     if (current.tagName === value || current.tagName === value) {
+//       return current;
+//     }
 
-    // Add all children of the current node to the queue
-    for (const child of current.children) {
-      queue.push(child);
-    }
-  }
+//     // Add all children of the current node to the queue
+//     for (const child of current.children) {
+//       queue.push(child);
+//     }
+//   }
 
-  // If the node is not found, return null
-  return null;
-}
+//   // If the node is not found, return null
+//   return null;
+// }
 
-// ... existing code ...
+// // ... existing code ...
 
-// Example usage of standalone functions
-// const rootNode = new Node("", "root", {}, true);
-// ... build your tree ...
+// // Example usage of standalone functions
+// // const rootNode = new Node("", "root", {}, true);
+// // ... build your tree ...
 
-// Use the standalone DFS function
-const foundNodeDFS = findDFS(rootNode, "li");
+// // Use the standalone DFS function
+// const foundNodeDFS = findDFS(rootNode, "li");
 
-// Use the standalone BFS function
-const foundNodeBFS = findBFS(rootNode, "h2");
+// // Use the standalone BFS function
+// const foundNodeBFS = findBFS(rootNode, "h2");
 
-Node, findDFS("li");
-console.log(foundNodeDFS);
-console.log(foundNodeBFS);
+// Node, findDFS("li");
+// console.log(foundNodeDFS);
+// console.log(foundNodeBFS);
 
 // Trees are hierarchical data structures that consist of nodes connected by edges.
 // They are used to represent hierarchical data, such as file systems, organization charts, and more.
@@ -520,7 +520,7 @@ console.log(foundNodeBFS);
 // BFS explores all nodes at the current level before moving to the next level.
 
 // Tree Class
-class Tree {
+export class Tree {
   constructor(root) {
     this.root = root;
   }
@@ -577,8 +577,8 @@ class Tree {
 }
 
 
-const tree = new Tree(rootNode);
+// const tree = new Tree(rootNode);
 
-console.log(tree.findDFS("p"));
-console.log(tree.findBFS("img"));
+// console.log(tree.findDFS("p"));
+// console.log(tree.findBFS("img"));
 
