@@ -46,7 +46,7 @@ const items = document.querySelectorAll("li");
 const itemsArray = Array.from(items);
 
 itemsArray.map(function (item) {
-  item.style.color = "green";
+  item.style.color = "Navy";
 });
 
 // define a map function that takes an array and a callback function as arguments
