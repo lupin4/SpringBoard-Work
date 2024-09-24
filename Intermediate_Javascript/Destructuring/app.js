@@ -191,42 +191,94 @@ const movies = {
   releaseYear: 1999,
   genre: "Science Fiction",
   cast: ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
-  ratings: {
-    imdb: 8.7,
+  Rated: {
     advisory: "PG-13",
   },
   Released: {
     USA: 1999,
     UK: 2000,
   },
-  Runtime: '2h 16min',
-  Language: 'English',
-  Subtitles: 'English',
-  Color: 'Color',
-  Budget: '$100,000,000',
-  BoxOffice: '$292,000,000',
-  Production: 'Warner Bros. Pictures',
-  Distributor: 'Warner Bros. Pictures',
-  Country: 'USA',
-  Language: 'English',
-  Subtitles: 'English',
-  Color: 'Color',
-
+  Ratings: [
+    { imdb: 8.7, url: "https://www.imdb.com/title/tt0133093/" },
+    { rottentomatoes: 90, url: "https://www.rottentomatoes.com/m/the_matrix" },
+    { metacritic: 88, url: "https://www.metacritic.com/movie/the-matrix" },
+  ],
+  Runtime: "2h 16min",
+  Language: "English",
+  Subtitles: "English",
+  Color: "Color",
+  Budget: "$100,000,000",
+  BoxOffice: "$292,000,000",
+  Production: "Warner Bros. Pictures",
+  Distributor: "Warner Bros. Pictures",
+  Country: "USA",
+  Language: "English",
+  Subtitles: "English",
+  Color: "Color",
 };
 
-const { title, director, releaseYear, genre, cast, ratings: { imdb, advisory } } = movies;
+const {
+  title,
+  director,
+  releaseYear,
+  genre,
+  cast,
+  Rated: { advisory },
+} = movies;
 
-console.log(title, director, releaseYear, genre, cast, imdb, advisory);
+console.log(title, director, releaseYear, genre, cast, advisory);
 
 // extracting nested values from arrays
 // with destructuring we simply nest the curly braces to access the nested values
-const movieRated = {ratings: {imdb: 8.7, advisory: "PG-13"}} 
-
+const movieRated = { ratings: { advisory: "PG-13" } };
 
 // we can reassign properties to new names
-const {ratings: {imdb: imdbRating, advisory: ratingAdvisory}} = movieRated;
+const {
+  ratings: { advisory: ratingAdvisory },
+} = movieRated;
 
-console.log(imdbRating, ratingAdvisory);
+console.log(ratingAdvisory);
+
+// destructuring is used in reassigning values to variables
+
+let happy = "sad";
+let sad = "happy";
+
+// here we are reassigning the values of happy and sad to each other in one line
+// destructuring is used to assign the values of the array to
+// the variables in the order they are passed in
+// this uses the destructuring array syntax to reassign the values of happy and sad to each other
+[happy, sad] = [sad, happy];
+
+console.log(happy, sad);
+
+// destructuring can be used to reorder variables in an array
+//
+// we can also destructure arrays in functions
+
+let prices = [9.99, 1.5, 19.99, 49.99, 99.99];
+
+let [first, second, third, fourth, fifth] = prices;
+
+// now we can reorder the variables in the array
+
+[first, second, third, fourth, fifth] = [fifth, fourth, third, second, first];
+let newPrices = [second, third, fourth, fifth, first];
+console.log(newPrices);
+
+function getFirstAndLast([first, ...rest], last) {
+  return [first, last];
+}
+
+const numbers3 = [1, 2, 3, 4, 5];
+
+console.log(getFirstAndLast(numbers3, 5));
+
+// skipping values in an array
+const skippingStones = [1, 2, 3, 4, 5, 6];
+// TODO: Crossing the River of Reflections requires skipping certain stones. Use array destructuring to extract only the first and the sixth stones. Print the extracted stones.
+let [firstSkippingStone, , , , , sixthSkippingStone] = skippingStones;
+console.log(firstSkippingStone, sixthSkippingStone);
 
 
 

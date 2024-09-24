@@ -1,4 +1,4 @@
-/* Stylesheet for Numbers Facts Exercise */
+/* Stylesheet for Springboard Exercises */
 
 /* Body styling */
 body {
@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100vh; /* Ensure content fills the viewport height */
     box-sizing: border-box;
 }
@@ -56,42 +56,6 @@ li{
     border-radius: 10px;
 }
 
-/* Button styling */
-button {
-    background-color: #36454F;
-    color: beige;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #2e3b43;
-}
-
-/* Input field styling */
-input[type="number"] {
-    background: none;
-    border: none;
-    border-bottom: 2px solid #36454F;
-    font-size: 1.5em;
-    color: #36454F;
-    outline: none;
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-    margin-top: 20px;
-    transition: border-bottom-color 0.3s ease;
-}
-
-input[type="number"]:focus {
-    border-bottom-color: #000000; /* Changes underline color when focused */
-}
-
 
 
 /* Additional spacing */
@@ -104,42 +68,8 @@ input[type="number"]:focus {
 
 
 
-/* Number Container Styling */
-.number-container {
-    width: 100%;
-    max-width: 400px; /* Limit the maximum width as needed */
-}
 
-/* Submit Form Styling */
-.submit-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
 
-/* Button Styling */
-.submit-btn button {
-    padding: 24px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Input Styling (As previously defined) */
-#numberInput {
-    caret-color: transparent; /* Hides the text cursor */
-    width: 100%;
-    box-sizing: border-box;
-    padding: 16px;
-    font-size: 48px;
-    text-align: center;
-}
-/* Remove spinner controls in WebKit browsers (Chrome, Edge, Safari) */
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
 
 /* Remove spinner controls in Firefox */
 input[type=number] {
@@ -152,33 +82,9 @@ input[type=number] {
     border-bottom-color: #000000; /* Changes underline color when focused */
 }
 
-/* Fact Wrapper Styling */
-.fact-wrapper {
-    
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    padding: 10px;
-    height: 80px; /* Fixed height based on expected content */
 
-}
 
-/* Number Fact Styling */
-.numberFact {
-    text-align: center;
-    font-size: 1.2em;
-    color: #36454F;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    height: 100%; /* Ensures the text takes up the full height */
-}
 
-/* Show the fact when active */
-.numberFact.active {
-    opacity: 1;
-}
 
 /* Responsive Design */
 @media (max-width: 600px) {
