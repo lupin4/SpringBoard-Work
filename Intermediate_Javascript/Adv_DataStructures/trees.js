@@ -60,6 +60,47 @@ class Node {
       this.body = body;
     }
   }
+  // Method to find a node with a specific value or tag name using DFS
+  findDFS(valueOrTagName) {
+    // Check if the current node matches the search term
+    if (this.value === valueOrTagName || this.tagName === valueOrTagName) {
+      return this;
+    }
+
+    // Recursively search in each child
+    for (const child of this.children) {
+      const found = child.findDFS(valueOrTagName);
+      if (found) {
+        return found;
+      }
+    }
+
+    // If the node is not found, return null
+    return null;
+  }
+
+  // Method to find a node with a specific value or tag name using BFS
+  findBFS(valueOrTagName) {
+    // Use a queue to implement BFS
+    const queue = [this];
+
+    while (queue.length > 0) {
+      const current = queue.shift();
+
+      // Check if the current node matches the search term
+      if (current.value === valueOrTagName || current.tagName === valueOrTagName) {
+        return current;
+      }
+
+      // Add all children of the current node to the queue
+      for (const child of current.children) {
+        queue.push(child);
+      }
+    }
+
+    // If the node is not found, return null
+    return null;
+  }
 
   appendChild(childNode) {
     this.children.push(childNode);
@@ -93,18 +134,105 @@ class Node {
   createSpan(attributes = {}) {
     return new Node("", "span", attributes);
   }
+  createH1(attributes = {}) {
+    return new Node("", "h1", attributes);
+  }
+  createH2(attributes = {}) {
+    return new Node("", "h2", attributes);
+  }
+  createH3(attributes = {}) {
+    return new Node("", "h3", attributes);
+  }
+  createH4(attributes = {}) {
+    return new Node("", "h4", attributes);
+  }
+  createH5(attributes = {}) {
+    return new Node("", "h5", attributes);
+  }
+  createH6(attributes = {}) {
+    return new Node("", "h6", attributes);
+  }
+  createSection(attributes = {}) {
+    return new Node("", "section", attributes);
+  }
+  createButton(attributes = {}) {
+    return new Node("", "button", attributes);
+  }
+  createInput(attributes = {}) {
+    return new Node("", "input", attributes);
+  }
+  createLabel(attributes = {}) {
+    return new Node("", "label", attributes);
+  }
+  createForm(attributes = {}) {
+    return new Node("", "form", attributes);
+  }
+  createTextarea(attributes = {}) {
+    return new Node("", "textarea", attributes);
+  }
+
+  createTable(attributes = {}) {
+    return new Node("", "table", attributes);
+  }
+  createLabel(attributes = {}) {
+    return new Node("", "label", attributes);
+  }
 
   createHeader(level = 1, attributes = {}) {
     const tagName = `h${level}`;
     return new Node("", tagName, attributes);
   }
 
-  createImage(src, alt = "", attributes = {}) {
-    return new Node("", "img", { src, alt, ...attributes });
+  createImage(src, alt = "", { size = {}, layout = {}, ...attributes } = {}) {
+    const imgAttributes = {
+      src,
+      alt,
+      ...attributes,
+      ...size, // Apply size attributes (e.g., width, height)
+      ...layout, // Apply layout attributes or classes
+    };
+    return new Node("", "img", imgAttributes);
   }
 
   createLink(href, text = "", attributes = {}) {
-    return new Node(text, "a", { href, ...attributes });
+    const linkNode = new Node("", "a", { href, ...attributes });
+    linkNode.setTextContent(text);
+    return linkNode;
+  }
+  createNav(attributes = {}) {
+    return new Node("", "nav", attributes);
+  }
+
+  createUl(attributes = {}) {
+    return new Node("", "ul", attributes);
+  }
+
+  createLi(attributes = {}) {
+    return new Node("", "li", attributes);
+  }
+
+  createVideo(attributes = {}) {
+    return new Node("", "video", attributes);
+  }
+
+  createAudio(attributes = {}) {
+    return new Node("", "audio", attributes);
+  }
+
+  createCanvas(attributes = {}) {
+    return new Node("", "canvas", attributes);
+  }
+
+  createTr(attributes = {}) {
+    return new Node("", "tr", attributes);
+  }
+
+  createTd(attributes = {}) {
+    return new Node("", "td", attributes);
+  }
+
+  createTh(attributes = {}) {
+    return new Node("", "th", attributes);
   }
 
   // Private instance methods to create html, head, and body
@@ -145,6 +273,8 @@ class Node {
   }
 }
 
+// **************************************************
+// **************************************************
 
 // Create the root node with isRoot = true
 const rootNode = new Node('', 'root', {}, true);
@@ -159,9 +289,97 @@ const paragraph = rootNode.createP();
 paragraph.setTextContent('Hello, World!');
 rootNode.body.appendChild(paragraph);
 
+// Create a div to wrap the image
+const container = rootNode.createDiv({ class: 'image-container' }); // You can add attributes like class if needed
+
+// Create an image with specified size and add it to the container
+const image = rootNode.createImage(
+  'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+  'A beautiful landscape',
+  { size: { width: '100%', height: '800px' } } // Added size argument
+);
+container.appendChild(image);
+
+// Append the container to the body
+rootNode.body.appendChild(container);
+
+// Create a link and add it to the body with visible text
+const link = rootNode.createLink('https://www.google.com', 'Click here');
+rootNode.body.appendChild(link);
+
 // Render the custom node tree into DOM elements
 const domElement = rootNode.html.render();
 
 // Append the rendered DOM element to the document body
 document.body.appendChild(domElement);
+
+// Assuming rootNode is an instance of Node and has been populated with children
+const foundNode = rootNode.findDFS('p'); // Finds the first <p> tag in the tree
+if (foundNode) {
+  console.log('Node found:', foundNode);
+} else {
+  console.log('Node not found.');
+}
+
+
+// In this example, a simple tree structure was created to represent an HTML page.
+// The root node is the html element, which contains a head and body.
+// then added a title to the head and a paragraph to the body.
+// also created a div to wrap an image and added a link to the body.
+// Finally, the custom node tree rendered into actual DOM elements and appended it to the document body.
+
+// This example demonstrates how trees can be used to represent hierarchical data structures and how nodes can be created and manipulated to build complex structures.
+// This is a basic HTML template builder using trees.
+
+// Depth-First Search (DFS) is a tree traversal algorithm that explores as far as possible along each branch before backtracking.
+// It is often implemented using recursion or a stack.
+// DFS can be used to search for a specific node, check if a node exists, or traverse the entire tree.
+// It is useful when the tree is deep and the target node is near the root.
+// The algorithm starts at the root and explores as far as possible along each branch before backtracking.
+// It uses a stack to keep track of the nodes to be explored.
+// The algorithm is efficient for trees with a small number of nodes.
+// It is also used in various applications, such as:
+// - Finding connected components in a graph
+// - Solving puzzles like mazes
+// - Parsing expressions
+// - Compiling code
+// - Web crawling
+// - Database querying
+// - Artificial intelligence
+// - Machine learning
+// - Decision making
+
+
+//  Here is a simple example of a tree and a DFS traversal:
+
+// Example Tree:
+//         A
+//        / \
+//       B   C
+//      / \   \
+//     D   E   F
+
+// DFS Traversal:
+// Start at A, explore B, then D, then E, then C, then F.   
+// The traversal order is A -> B -> D -> E -> C -> F.
+
+// Breadth-First Search (BFS) is a tree traversal algorithm that explores all nodes at the current level before moving to the next level.
+// It is often implemented using a queue.
+// BFS can be used to search for a specific node, check if a node exists, or traverse the entire tree.
+// It is useful when the tree is wide and the target node is near the root.
+// The algorithm starts at the root and explores all nodes at the current level before moving to the next level.
+// It uses a queue to keep track of the nodes to be explored.
+// The algorithm is efficient for trees with a small number of nodes.
+// It is also used in various applications, such as:
+// - Finding the shortest path in a graph
+// - Solving puzzles like mazes
+// - Compiling code
+// - Web crawling
+// - Database querying
+// - Artificial intelligence
+// - Machine learning
+// - Decision making
+
+
+
 
