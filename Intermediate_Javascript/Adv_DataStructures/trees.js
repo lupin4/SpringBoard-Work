@@ -69,6 +69,7 @@ class Node {
 
     // Recursively search in each child
     for (const child of this.children) {
+      console.log("DFSTraversing:", child.tagName);
       const found = child.findDFS(value);
       if (found) {
         return found;
@@ -86,7 +87,7 @@ class Node {
 
     while (queue.length > 0) {
       const current = queue.shift();
-      console.log("Traversing:", current.value);
+      console.log("BFS Traversing:", current.tagName);
 
       // Check if the current node matches the search term
       if (current.value === value || current.tagName === value) {
@@ -304,12 +305,12 @@ const rootNode = new Node("", "root", {}, true);
 
 // Create a title and add it to the head
 const title = rootNode.createHeader(1);
-title.setTextContent("My Page Title");
+title.setTextContent("Trees");
 rootNode.head.appendChild(title);
 
 // Create a paragraph and append it to the body
 const paragraph = rootNode.createP();
-paragraph.setTextContent("Hello, World!");
+paragraph.setTextContent("Hello, World! Welcome to Advanced Data Structures");
 rootNode.body.appendChild(paragraph);
 
 // Create a div to wrap the image
@@ -502,11 +503,82 @@ function findBFS(node, value) {
 const foundNodeDFS = findDFS(rootNode, "li");
 
 // Use the standalone BFS function
-const foundNodeBFS = findBFS(rootNode, "li");
+const foundNodeBFS = findBFS(rootNode, "h2");
 
 Node, findDFS("li");
 console.log(foundNodeDFS);
 console.log(foundNodeBFS);
 
+// Trees are hierarchical data structures that consist of nodes connected by edges.
+// They are used to represent hierarchical data, such as file systems, organization charts, and more.
+// Trees have a root node, which is the topmost node, and leaves, which are the bottommost nodes.
+// Nodes can have zero or more child nodes.
+// The depth of a node is the number of edges from the root to that node.
+// The height of a node is the number of edges from that node to the deepest leaf.
+// Trees can be traversed using Depth-First Search (DFS) or Breadth-First Search (BFS).
+// DFS explores as far as possible along each branch before backtracking.
+// BFS explores all nodes at the current level before moving to the next level.
 
+// Tree Class
+class Tree {
+  constructor(root) {
+    this.root = root;
+  }
+
+  findDFS(value) {
+    return this._findDFS(this.root, value);
+  }
+
+  _findDFS(node, value) {
+    // Check if the current node matches the search term
+    if (node.value === value || node.tagName === value) {
+      return node;
+    }
+
+    // Recursively search in each child
+    for (const child of node.children) {
+      console.log("DFS Traversing:", child.tagName);
+      const found = this._findDFS(child, value);
+      if (found) {
+        return found;
+      }
+    }
+
+    // If the node is not found, return null
+    return null;
+  }
+
+  findBFS(value) {
+    return this._findBFS(this.root, value);
+  }
+
+  _findBFS(node, value) {
+    // Use a queue to implement BFS
+    const queue = [node];
+
+    while (queue.length > 0) {
+      const current = queue.shift();
+      console.log("BFS Traversing:", current.tagName);
+
+      // Check if the current node matches the search term
+      if (current.value === value || current.tagName === value) {
+        return current;
+      }
+
+      // Add all children of the current node to the queue
+      for (const child of current.children) {
+        queue.push(child);
+      }
+    }
+
+    // If the node is not found, return null
+    return null;
+  }
+}
+
+
+const tree = new Tree(rootNode);
+
+console.log(tree.findDFS("p"));
+console.log(tree.findBFS("img"));
 
