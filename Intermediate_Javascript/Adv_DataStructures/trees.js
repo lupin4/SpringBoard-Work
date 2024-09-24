@@ -88,7 +88,10 @@ class Node {
       const current = queue.shift();
 
       // Check if the current node matches the search term
-      if (current.value === valueOrTagName || current.tagName === valueOrTagName) {
+      if (
+        current.value === valueOrTagName ||
+        current.tagName === valueOrTagName
+      ) {
         return current;
       }
 
@@ -100,6 +103,15 @@ class Node {
 
     // If the node is not found, return null
     return null;
+  }
+
+  // Method to append a stylesheet to the real head element
+  appendStylesheet(href) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = href;
+    document.head.appendChild(link);
   }
 
   appendChild(childNode) {
@@ -123,8 +135,12 @@ class Node {
   }
 
   // Methods for creating specific HTML elements
-  createDiv(attributes = {}) {
-    return new Node("", "div", attributes);
+  createDiv({ layout = {}, size = {}, spacing = {}, ...attributes } = {}) {
+    const styleAttributes = {
+      ...attributes,
+      style: this.#generateStyleString({ ...layout, ...size, ...spacing }),
+    };
+    return new Node("", "div", styleAttributes);
   }
 
   createP(attributes = {}) {
@@ -248,6 +264,13 @@ class Node {
     return new Node("", "body", attributes);
   }
 
+  // Helper method to generate a style string from an object
+  #generateStyleString(styles) {
+    return Object.entries(styles)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join(" ");
+  }
+
   // Method to render the custom Node tree into actual DOM elements
   render() {
     // Create the DOM element for this node
@@ -275,28 +298,30 @@ class Node {
 
 // **************************************************
 // **************************************************
+// Example Usage
+// **************************************************
 
 // Create the root node with isRoot = true
-const rootNode = new Node('', 'root', {}, true);
+const rootNode = new Node("", "root", {}, true);
 
 // Create a title and add it to the head
 const title = rootNode.createHeader(1);
-title.setTextContent('My Page Title');
+title.setTextContent("My Page Title");
 rootNode.head.appendChild(title);
 
 // Create a paragraph and append it to the body
 const paragraph = rootNode.createP();
-paragraph.setTextContent('Hello, World!');
+paragraph.setTextContent("Hello, World!");
 rootNode.body.appendChild(paragraph);
 
 // Create a div to wrap the image
-const container = rootNode.createDiv({ class: 'image-container' }); // You can add attributes like class if needed
+const container = rootNode.createDiv({ class: "image-container" });
 
-// Create an image with specified size and add it to the container
+// Create an image and add it to the container
 const image = rootNode.createImage(
-  'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
-  'A beautiful landscape',
-  { size: { width: '100%', height: '800px' } } // Added size argument
+  "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+  "A beautiful landscape",
+  { size: { width: "100%", height: "800px" } }
 );
 container.appendChild(image);
 
@@ -304,23 +329,71 @@ container.appendChild(image);
 rootNode.body.appendChild(container);
 
 // Create a link and add it to the body with visible text
-const link = rootNode.createLink('https://www.google.com', 'Click here');
+const link = rootNode.createLink("https://www.google.com", "Click here");
 rootNode.body.appendChild(link);
 
-// Render the custom node tree into DOM elements
-const domElement = rootNode.html.render();
+// Render and replace the body content
+const bodyContent = rootNode.body.render();
+document.body.parentNode.replaceChild(bodyContent, document.body);
 
-// Append the rendered DOM element to the document body
-document.body.appendChild(domElement);
+// Append the stylesheet to the actual document head
+rootNode.appendStylesheet("style.css");
+
+// Create a div with styles using the createDiv method amd the style object
+
+// const divWithStyles = rootNode.createDiv({
+//   layout: {
+//     display: "flex",
+//     justifyContent: "center", // Text will align to the start of the flex container
+//     alignItems: "center",
+//     border: "3px solid navy",
+//     borderRadius: "10px", // Add this line to make the border rounded
+//     flexDirection: "column",
+//     textAlign: "center", // Change from "center" to "left" to align text to the left
+//   },
+//   size: { width: "100%", height: "100px" },
+//   spacing: { margin: "10px", padding: "20px" },
+//   class: "my-div",
+// });
+
+// Create a paragraph with centered text using CSS class
+// const centeredParagraph = rootNode.createP({
+//   class: "centered-text rounded-border" // Use CSS classes for styling
+// });
+// centeredParagraph.setTextContent("This is a styled div.");
+
+// // Append the paragraph to the divWithStyles
+// divWithStyles.appendChild(centeredParagraph);
+
+// // Append the divWithStyles to the body or another container within your Node structure
+// rootNode.body.appendChild(divWithStyles);
+
+
+
+// Render the custom node tree into DOM elements
+// const domElement = rootNode.html.render();
+
+// // Append the rendered DOM element to the document body
+// document.body.appendChild(domElement);
 
 // Assuming rootNode is an instance of Node and has been populated with children
-const foundNode = rootNode.findDFS('p'); // Finds the first <p> tag in the tree
+const foundNode = rootNode.findDFS("p"); // Finds the first <p> tag in the tree
 if (foundNode) {
-  console.log('Node found:', foundNode);
+  console.log("Node found:", foundNode);
 } else {
-  console.log('Node not found.');
+  console.log("Node not found.");
 }
 
+// Method to create and append a link element for the CSS file
+function appendStylesheet(href) {
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'stylesheet');
+  link.setAttribute('type', 'text/css');
+  link.setAttribute('href', href);
+  document.head.appendChild(link);
+}
+
+// Call this function to append the stylesheet
 
 // In this example, a simple tree structure was created to represent an HTML page.
 // The root node is the html element, which contains a head and body.
