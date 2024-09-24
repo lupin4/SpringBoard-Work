@@ -61,15 +61,15 @@ class Node {
     }
   }
   // Method to find a node with a specific value or tag name using DFS
-  findDFS(valueOrTagName) {
+  findDFS(value) {
     // Check if the current node matches the search term
-    if (this.value === valueOrTagName || this.tagName === valueOrTagName) {
+    if (this.value === value || this.tagName === value) {
       return this;
     }
 
     // Recursively search in each child
     for (const child of this.children) {
-      const found = child.findDFS(valueOrTagName);
+      const found = child.findDFS(value);
       if (found) {
         return found;
       }
@@ -80,18 +80,16 @@ class Node {
   }
 
   // Method to find a node with a specific value or tag name using BFS
-  findBFS(valueOrTagName) {
+  findBFS(value) {
     // Use a queue to implement BFS
     const queue = [this];
 
     while (queue.length > 0) {
       const current = queue.shift();
+      console.log("Traversing:", current.value);
 
       // Check if the current node matches the search term
-      if (
-        current.value === valueOrTagName ||
-        current.tagName === valueOrTagName
-      ) {
+      if (current.value === value || current.tagName === value) {
         return current;
       }
 
@@ -368,8 +366,6 @@ rootNode.appendStylesheet("style.css");
 // // Append the divWithStyles to the body or another container within your Node structure
 // rootNode.body.appendChild(divWithStyles);
 
-
-
 // Render the custom node tree into DOM elements
 // const domElement = rootNode.html.render();
 
@@ -386,10 +382,10 @@ if (foundNode) {
 
 // Method to create and append a link element for the CSS file
 function appendStylesheet(href) {
-  const link = document.createElement('link');
-  link.setAttribute('rel', 'stylesheet');
-  link.setAttribute('type', 'text/css');
-  link.setAttribute('href', href);
+  const link = document.createElement("link");
+  link.setAttribute("rel", "stylesheet");
+  link.setAttribute("type", "text/css");
+  link.setAttribute("href", href);
   document.head.appendChild(link);
 }
 
@@ -422,7 +418,6 @@ function appendStylesheet(href) {
 // - Machine learning
 // - Decision making
 
-
 //  Here is a simple example of a tree and a DFS traversal:
 
 // Example Tree:
@@ -433,7 +428,7 @@ function appendStylesheet(href) {
 //     D   E   F
 
 // DFS Traversal:
-// Start at A, explore B, then D, then E, then C, then F.   
+// Start at A, explore B, then D, then E, then C, then F.
 // The traversal order is A -> B -> D -> E -> C -> F.
 
 // Breadth-First Search (BFS) is a tree traversal algorithm that explores all nodes at the current level before moving to the next level.
@@ -453,6 +448,65 @@ function appendStylesheet(href) {
 // - Machine learning
 // - Decision making
 
+// Standalone DFS function
+function findDFS(node, value) {
+  // Check if the current node matches the search term
+  if (node.value === value || node.tagName === value) {
+    return node;
+  }
+
+  // Recursively search in each child
+  for (const child of node.children) {
+    console.log("DFSTraversing:", child.tagName);
+    const found = findDFS(child, value);
+    if (found) {
+      return found;
+    }
+  }
+
+  // If the node is not found, return null
+  return null;
+}
+
+// Standalone BFS function
+function findBFS(node, value) {
+  // Use a queue to implement BFS
+  const queue = [node];
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+    console.log("BFS Traversing:", current.tagName);
+
+    // Check if the current node matches the search term
+    if (current.tagName === value || current.tagName === value) {
+      return current;
+    }
+
+    // Add all children of the current node to the queue
+    for (const child of current.children) {
+      queue.push(child);
+    }
+  }
+
+  // If the node is not found, return null
+  return null;
+}
+
+// ... existing code ...
+
+// Example usage of standalone functions
+// const rootNode = new Node("", "root", {}, true);
+// ... build your tree ...
+
+// Use the standalone DFS function
+const foundNodeDFS = findDFS(rootNode, "li");
+
+// Use the standalone BFS function
+const foundNodeBFS = findBFS(rootNode, "li");
+
+Node, findDFS("li");
+console.log(foundNodeDFS);
+console.log(foundNodeBFS);
 
 
 
