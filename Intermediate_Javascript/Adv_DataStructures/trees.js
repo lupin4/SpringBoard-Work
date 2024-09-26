@@ -582,3 +582,118 @@ export class Tree {
 // console.log(tree.findDFS("p"));
 // console.log(tree.findBFS("img"));
 
+// Binary Trees
+// Binary trees are a type of tree where each node has at most two children, referred to as the left child and the right child.
+// The left child is the node to the left of the current node, and the right child is the node to the right.
+// The left child is always less than the current node, and the right child is always greater than the current node.
+// This property allows for efficient searching, insertion, and deletion of elements.
+// Binary trees are used in various applications, such as:
+// - Binary search trees
+// - Binary heaps
+// - Binary trees in machine learning
+
+
+class BinaryTree {
+  constructor(value, left = null, right = null) {
+    this.value = value;
+    this.left = left;
+    this.right = right;
+  }
+
+}
+
+// Binary Search Tree (BST)
+// A Binary Search Tree (BST) is a binary tree where each node has a value, and for each node, all values in the left subtree are less than the node's value, and all values in the right subtree are greater.
+// This property allows for efficient searching, insertion, and deletion of elements.
+// BSTs are used in various applications, such as:
+// - Searching for a value in a sorted list
+// - Inserting a value into a sorted list
+// - Deleting a value from a sorted list
+// - Balancing a tree
+// - Implementing priority queues
+
+
+// Quad Trees
+// Quad trees are a type of tree where each node has four children, referred to as the top-left, top-right, bottom-left, and bottom-right children.
+// Quad trees are used in various applications, such as:
+// - Spatial indexing
+// - Image processing
+// - Game development
+// - Computer graphics
+// - Computer vision
+// - Geographic information systems
+// - Database indexing
+// - Artificial intelligence
+// - Machine learning
+// - Decision making
+
+
+// N-ary Trees
+// N-ary trees are a type of tree where each node has N children.
+// N-ary trees are used in various applications, such as:
+// - Spatial indexing
+// - Image processing
+// - Game development
+// - Computer graphics
+// - Computer vision
+// - Geographic information systems
+// - Database indexing
+
+
+//Oct Trees
+// Oct trees are a type of tree where each node has eight children, referred to as the top-left, top-right, top-center, bottom-left, bottom-right, bottom-center, center-left, and center-right children.
+// Oct trees are used in various applications, such as:
+// - Spatial indexing
+// - Image processing
+// - Game development
+// - Computer graphics
+// - Computer vision
+// - Geographic information systems
+// - Database indexing
+
+
+// K-ary Trees
+// K-ary trees are a type of tree where each node has K children.
+// K-ary trees are used in various applications, such as:
+// - Spatial indexing
+// - Image processing
+// - Game development
+// - Computer graphics
+// - Computer vision
+// - Geographic information systems
+
+
+//bidrectional Trees
+// Bidirectional trees are a type of tree where each node has two children, referred to as the left child and the right child.
+// Bidirectional trees are used in various applications, such as:
+// - Spatial indexing
+// - Image processing
+// - Game development
+// - Computer graphics
+// - Computer vision
+// - Geographic information systems
+// - Database indexing
+// - Artificial intelligence
+// - Machine learning
+// - Decision making
+
+class BidirectionalTree {
+  constructor(parent, children=[]) {
+    this.parent = parent;
+    this.children = children;
+  }
+}
+
+//b-tree
+
+
+
+
+
+
+
+
+
+
+
+

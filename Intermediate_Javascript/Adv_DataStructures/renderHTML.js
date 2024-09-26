@@ -42,14 +42,15 @@ const listItem2 = new Node("li", "li", {}, false);
 listItem1.setTextContent(
   "Trees are non-linear data structures that store hierarchical data"
 );
-listItem2.setTextContent("Item 2");
+listItem2.setTextContent(
+  "They consist of nodes, where each node can have zero or more child nodes."
+);
 
 rootNode.body.appendChild(unorderedList);
 rootNode.body.appendChild(listItem1);
 rootNode.body.appendChild(listItem2);
 
-unorderedList.appendChild(listItem1);
-unorderedList.appendChild(listItem2);
+
 
 // Render and replace the body content
 const bodyContent = rootNode.body.render();
