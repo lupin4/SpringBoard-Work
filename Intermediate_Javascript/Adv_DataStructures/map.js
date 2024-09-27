@@ -46,9 +46,8 @@ const items = document.querySelectorAll("li");
 const itemsArray = Array.from(items);
 
 itemsArray.map(function (item) {
-  item.style.color = "green";
+  item.style.color = "Navy";
 });
-
 
 // define a map function that takes an array and a callback function as arguments
 // the callback function is called with the element, the index, and the array as arguments
@@ -66,9 +65,8 @@ function myMap(array, callback) {
 const names = ["John", "Jane", "Doe", "Smith"];
 
 const namesUpperCase = myMap(names, function (name) {
-    return name.toUpperCase();
+  return name.toUpperCase();
 });
 
 console.log(namesUpperCase);
-
-
+// Output: [ 'JOHN', 'JANE', 'DOE', 'SMITH' ]
