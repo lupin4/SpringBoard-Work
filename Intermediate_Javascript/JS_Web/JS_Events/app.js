@@ -83,12 +83,22 @@ document.addEventListener("keydown", (event) => {
 
 //Selecting all the buttons with the class remove-event
 const removeButtons = document.querySelectorAll(".remove-event");
-
+const eventLi = document.querySelectorAll(".event");
 //Adding an event listener to each button
+
 removeButtons.forEach((button) => {
   button.addEventListener("click", function (e) {
     e.target.parentElement.remove();
     // console.log("You clicked " + e.target.parentElement.textContent);
+  });
+});
+
+eventLi.forEach((li) => {
+  li.addEventListener("click", function (e) {
+    e.target.style.color = "red";
+    e.target.style.textDecoration = "line-through";
+    const star = document.createTextNode("★ ");
+    e.target.insertBefore(star, e.target.firstChild);
   });
 });
 
