@@ -78,9 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Keydown event listener
 document.addEventListener("keydown", (event) => {
-  console.log(event.key);
+  //   console.log(event.key);
 });
-
 
 //Selecting all the buttons with the class remove-event
 const removeButtons = document.querySelectorAll(".remove-event");
@@ -89,8 +88,27 @@ const removeButtons = document.querySelectorAll(".remove-event");
 removeButtons.forEach((button) => {
   button.addEventListener("click", function (e) {
     e.target.parentElement.remove();
-    console.log("You clicked " + e.target.parentElement.textContent);
+    // console.log("You clicked " + e.target.parentElement.textContent);
   });
 });
+
+const addEventForm = document.getElementById("add-event-form");
+// Select the form, output and events list
+const form = document.getElementById("add-event-form");
+const output = document.getElementById("add-event-output");
+const eventsList = document.getElementById("events-list");
+//add an event listener to the form
+// it listens for a submit event which is triggered when the user clicks the submit button on the form
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const newEvent = form.elements[0].value;
+  console.log(newEvent);
+  const newEventLi = document.createElement("li");
+  newEventLi.textContent = newEvent;
+  eventsList.appendChild(newEventLi);
+  output.textContent = newEvent;
+  form.reset();
+});
+
 
 
