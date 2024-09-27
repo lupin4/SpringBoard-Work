@@ -100,13 +100,20 @@ const eventsList = document.getElementById("events-list");
 //add an event listener to the form
 // it listens for a submit event which is triggered when the user clicks the submit button on the form
 form.addEventListener("submit", function (e) {
+  //prevent the default behavior of the form which is to submit to a server
   e.preventDefault();
+  //get the value of the new event from the form
   const newEvent = form.elements[0].value;
   console.log(newEvent);
+  //create a new list item element
   const newEventLi = document.createElement("li");
+  //set the text content of the new list item to the new event
   newEventLi.textContent = newEvent;
+  //append the new list item to the events list
   eventsList.appendChild(newEventLi);
+  //update the output to show the new event
   output.textContent = newEvent;
+  //reset the form
   form.reset();
 });
 
