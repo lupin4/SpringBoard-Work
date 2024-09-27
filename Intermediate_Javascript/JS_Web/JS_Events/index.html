@@ -143,13 +143,42 @@
         <script>
             const keyPressInput = document.getElementById('key-press-input');
             const keyPressOutput = document.getElementById('key-press-output'); 
+            let keyPressed = "";
 
             keyPressInput.addEventListener('keypress', function(event) {
-                keyPressOutput.textContent = 'Key Pressed: ' + event.key;
+                keyPressed += event.key; // Append the pressed key to the string
+                keyPressOutput.textContent = keyPressed;
             });
         </script>
         
         <hr>
+
+        <h5>Event Propagation</h5>
+        <p>Event propagation is the order in which events are handled. It can be either bubbling or capturing.</p>
+        <p>Bubbling is when the event is handled by the innermost element and then bubbles up to the outermost element.</p>
+        <p>Capturing is when the event is handled by the outermost element and then captures down to the innermost element.</p>
+        <p>stopPropagation() is used to stop the event from bubbling or capturing.</p>
+        <p>Here's an example:</p>
+        <div id="propagation-container">
+            <button id="propagation-button">Click Me</button>   
+        </div>
+
+        <script>
+            document.getElementById('propagation-button').addEventListener('click', function(event) {
+                event.stopPropagation();
+                alert('Button Clicked!');
+            });
+        </script>   
+
+        <hr>
+        <ul>
+            <li>Event 1 <button type="button" class="remove-event">Remove Me</button></li>
+            <li>Event 2 <button type="button" class="remove-event">Remove Me</button></li>
+            <li>Event 3 <button type="button" class="remove-event">Remove Me</button> </li>
+            <li>Event 4 <button type="button" class="remove-event">Remove Me</button></li>
+            <li>Event 5 <button type="button" class="remove-event">Remove Me</button></li>
+        </ul>
+        
 
         
         

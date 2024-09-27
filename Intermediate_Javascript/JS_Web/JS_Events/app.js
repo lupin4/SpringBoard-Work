@@ -76,8 +76,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//Keydown event listener
 document.addEventListener("keydown", (event) => {
   console.log(event.key);
+});
+
+
+//Selecting all the buttons with the class remove-event
+const removeButtons = document.querySelectorAll(".remove-event");
+
+//Adding an event listener to each button
+removeButtons.forEach((button) => {
+  button.addEventListener("click", function (e) {
+    e.target.parentElement.remove();
+    console.log("You clicked " + e.target.parentElement.textContent);
+  });
 });
 
 
