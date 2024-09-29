@@ -1,0 +1,67 @@
+.gif-container img {
+  width: 300px; /* Adjusted width */
+  height: 300px; /* Adjusted height */
+  margin: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  object-fit: cover; /* Ensures the image covers the entire area */
+}
+
+#clear-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #f00; /* Example background color */
+  color: #fff; /* Example text color */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+#clear-button:hover {
+  background-color: #c00; /* Darker background on hover */
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  gap: 10px; /* Add gap between buttons */
+}
+
+#search-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc; /* Add border for modern look */
+  flex: 1; /* Allow input to take available space */
+}
+
+#search-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #2f4f4f; /* Modern color */
+  color: #fff;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+#search-button:hover {
+  background-color: #1d3131; /* Darker shade on hover */
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  
+  color: darkslategrey;
+}
+
+body {
+  background-color: beige;
+}
