@@ -27,15 +27,15 @@
   align-items: center;
   margin-bottom: 20px;
   padding: 10px;
-  gap: 10px; /* Add gap between buttons */
+  gap: 10px; 
 }
 
 #search-input {
   padding: 10px;
-  width: 20%; /* Adjusted width */
+  width: 20%; 
   border-radius: 5px;
-  border: 1px solid #ccc; /* Add border for modern look */
-  flex: 0 1 auto; /* Allow input to take available space but not grow too large */
+  border: 1px solid #ccc; 
+  flex: 0 1 auto; 
 }
 
 #search-button {
@@ -43,13 +43,13 @@
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  background-color: beige; /* Updated background color */
-  color: #3c4444; /* Updated text color */
-  transition: background-color 0.3s ease; /* Smooth transition */
+  background-color: rgb(216, 216, 197); 
+  color: #3c4444; 
+  transition: background-color 0.3s ease; 
 }
 
 #search-button:hover {
-  background-color: rgb(169, 169, 154); /* Darker shade on hover */
+  background-color: rgb(255, 255, 228); 
 }
 
 h1 {
@@ -64,6 +64,6 @@ h1 {
 }
 
 body {
-  background-color: #3c4444; /* Updated background color */
-  color: beige; /* Updated text color */
+  background-color: #3c4444; 
+  color: beige; 
 }
