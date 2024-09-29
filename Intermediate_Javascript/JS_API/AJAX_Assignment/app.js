@@ -2,7 +2,7 @@ console.log("Let's get this party started!");
 
 const searchGifs = (searchTerm) => {
   //API Key
-  const apiKey = "rJ5pjS9kZHMte0LCSdbrlIDcJapWF3zi";
+  const apiKey = "API_KEY_HERE";
   // Giphy API URL for random GIFs
   const apiUrl = `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=${searchTerm}&rating=g`;
   // Fetch data from Giphy API using axios get request
