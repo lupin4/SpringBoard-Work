@@ -2,7 +2,7 @@
   width: 300px; /* Adjusted width */
   height: 300px; /* Adjusted height */
   margin: 10px;
-  border: 1px solid #000;
+  border: 1px solid #3c4444;
   border-radius: 5px;
   object-fit: cover; /* Ensures the image covers the entire area */
 }
@@ -12,8 +12,8 @@
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  background-color: #f00; /* Example background color */
-  color: #fff; /* Example text color */
+  background-color: #d35562; /* Updated background color */
+  color: beige; /* Updated text color */
   transition: background-color 0.3s ease; /* Smooth transition */
 }
 
@@ -32,9 +32,10 @@
 
 #search-input {
   padding: 10px;
+  width: 20%; /* Adjusted width */
   border-radius: 5px;
   border: 1px solid #ccc; /* Add border for modern look */
-  flex: 1; /* Allow input to take available space */
+  flex: 0 1 auto; /* Allow input to take available space but not grow too large */
 }
 
 #search-button {
@@ -42,13 +43,13 @@
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  background-color: #2f4f4f; /* Modern color */
-  color: #fff;
+  background-color: beige; /* Updated background color */
+  color: #3c4444; /* Updated text color */
   transition: background-color 0.3s ease; /* Smooth transition */
 }
 
 #search-button:hover {
-  background-color: #1d3131; /* Darker shade on hover */
+  background-color: rgb(169, 169, 154); /* Darker shade on hover */
 }
 
 h1 {
@@ -59,9 +60,10 @@ h1 {
   padding: 10px;
   border-radius: 5px;
   
-  color: darkslategrey;
+  color: beige;
 }
 
 body {
-  background-color: beige;
+  background-color: #3c4444; /* Updated background color */
+  color: beige; /* Updated text color */
 }

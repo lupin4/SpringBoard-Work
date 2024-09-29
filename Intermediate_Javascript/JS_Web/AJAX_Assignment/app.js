@@ -3,16 +3,17 @@ console.log("Let's get this party started!");
 const searchGifs = (searchTerm) => {
   //API Key
   const apiKey = "rJ5pjS9kZHMte0LCSdbrlIDcJapWF3zi";
-  // Giphy API URL for searches
-  const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${searchTerm}&limit=1&offset=0&rating=g&lang=en`;
+  // Giphy API URL for random GIFs
+  const apiUrl = `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=${searchTerm}&rating=g`;
   // Fetch data from Giphy API using axios get request
   axios
     .get(apiUrl)
     .then((response) => {
       // Check if the response contains data
-      if (response.data.data && response.data.data.length > 0) {
+      if (response.data.data) {
         // Extract the URL of the GIF from the response data
-        const gifUrl = response.data.data[0].images.fixed_height.url; // Use fixed height
+        // Use fixed height so all Gif's are the same size
+        const gifUrl = response.data.data.images.fixed_height.url;
         // Display the GIF on the webpage
         displayGif(gifUrl);
       } else {
