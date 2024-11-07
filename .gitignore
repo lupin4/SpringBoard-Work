@@ -1,6 +1,7 @@
 # Ignore node_modules directory
 node_modules/
 
+
 # Ignore log files
 *.log
 
@@ -18,3 +19,6 @@ build/
 
 # Ignore Starter Code directory
 **/Starter Code*/
+
+# Ignore PDF files
+*.pdf
