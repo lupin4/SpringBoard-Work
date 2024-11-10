@@ -1,0 +1,191 @@
+# Basic Tasks
+
+# 1. List All Films - Retrieve the titles of all films available in SWAPI
+query GetAllFilms {
+  allFilms {
+    films {
+      title
+    }
+  }
+}
+
+# 2. Fetch a Specific Character - Get the name of a specific character using their unique ID
+query GetCharacterById($id: ID!) {
+  person(id: $id) {
+    name
+  }
+}
+
+# 3. Explore Planets - Get the names of the first 5 planets in the Star Wars universe
+query GetFirstFivePlanets {
+  allPlanets(first: 5) {
+    planets {
+      name
+    }
+  }
+}
+
+# 4. Starships Information - Fetch names and models of 3 starships
+query GetThreeStarships {
+  allStarships(first: 3) {
+    starships {
+      name
+      model
+    }
+  }
+}
+
+# Intermediate Tasks
+
+# 5. Character and Their Starships - For each of the first 5 characters, list the names of starships they've piloted
+query GetCharactersAndStarships {
+  allPeople(first: 5) {
+    people {
+      name
+      starships {
+        name
+      }
+    }
+  }
+}
+
+# 6. Species and Their Languages - Retrieve names and languages of 5 species
+query GetSpeciesAndLanguages {
+  allSpecies(first: 5) {
+    species {
+      name
+      language
+    }
+  }
+}
+
+# 7. Planets and Their Climates - Query for the names and climates of 5 planets
+query GetPlanetsAndClimates {
+  allPlanets(first: 5) {
+    planets {
+      name
+      climate
+    }
+  }
+}
+
+# 8. Vehicles and Their Costs - Get names and cost in credits for 3 vehicles
+query GetVehiclesAndCosts {
+  allVehicles(first: 3) {
+    vehicles {
+      name
+      costInCredits
+    }
+  }
+}
+
+# Advanced Tasks
+
+# 9. Characters in a Specific Film - List all characters appearing in a given film by ID
+query GetCharactersInFilm($filmId: ID!) {
+  film(id: $filmId) {
+    title
+    characterConnection {
+      characters {
+        name
+      }
+    }
+  }
+}
+
+# 10. Multi-Film Characters - Find characters that appear in more than one film
+query GetMultiFilmCharacters {
+  allPeople {
+    people {
+      name
+      filmConnection {
+        films {
+          title
+        }
+      }
+    }
+  }
+}
+
+# 11. Aggregate Film Statistics - Calculate the total number of characters across all films
+query GetTotalCharactersCount {
+  allFilms {
+    films {
+      characterConnection {
+        totalCount
+      }
+    }
+  }
+}
+
+# Complex Tasks
+
+# 12. Full Character Profiles - Compile a full profile for a given character, including their films, starships, and homeworld
+query GetFullCharacterProfile($id: ID!) {
+  person(id: $id) {
+    name
+    homeworld {
+      name
+    }
+    starships {
+      name
+    }
+    filmConnection {
+      films {
+        title
+      }
+    }
+  }
+}
+
+# 13. Link Characters with Their Planets - Query the first 5 characters, including the name and population of their homeworld
+query GetCharactersWithHomeworld {
+  allPeople(first: 5) {
+    people {
+      name
+      homeworld {
+        name
+        population
+      }
+    }
+  }
+}
+
+# 14. Vehicles, Their Pilots, and Pilots' Species - For the first 3 vehicles, list their names, pilots, and the species of those pilots
+query GetVehiclesPilotsAndSpecies {
+  allVehicles(first: 3) {
+    vehicles {
+      name
+      pilots {
+        name
+        species {
+          name
+        }
+      }
+    }
+  }
+}
+
+# 15. Films and Their Associated Entities - For the first 3 films, list all related characters, planets, and starships
+query GetFilmsWithEntities {
+  allFilms(first: 3) {
+    films {
+      title
+      characterConnection {
+        characters {
+          name
+        }
+      }
+      planetConnection {
+        planets {
+          name
+        }
+      }
+      starshipConnection {
+        starships {
+          name
+        }
+      }
+    }
+  }
+}
