@@ -1,11 +1,12 @@
 {
-  "name": "dsa-sorting",
+  "name": "dsa-trees",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "areCousins.js",
   "scripts": {
-    "test": "jest --verbose"
+    "test": "jest"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
